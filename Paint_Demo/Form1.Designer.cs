@@ -43,9 +43,17 @@ namespace Paint_Demo
             this.btnRed = new System.Windows.Forms.Button();
             this.btnGreen = new System.Windows.Forms.Button();
             this.btnYellow = new System.Windows.Forms.Button();
-            this.btnSizePlus = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.pbAdd = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnPlusFirstSideTriangle = new System.Windows.Forms.Button();
+            this.btnPlusSecondSideTriangle = new System.Windows.Forms.Button();
+            this.btnPlusThirdSideTriangle = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAdd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -53,10 +61,11 @@ namespace Paint_Demo
             this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Location = new System.Drawing.Point(154, 12);
+            this.panel1.Location = new System.Drawing.Point(148, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(634, 426);
+            this.panel1.Size = new System.Drawing.Size(640, 426);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             // 
             // btnBlue
@@ -179,35 +188,92 @@ namespace Paint_Demo
             this.btnYellow.UseVisualStyleBackColor = false;
             this.btnYellow.Click += new System.EventHandler(this.btnYellow_Click);
             // 
-            // btnSizePlus
-            // 
-            this.btnSizePlus.Location = new System.Drawing.Point(12, 172);
-            this.btnSizePlus.Name = "btnSizePlus";
-            this.btnSizePlus.Size = new System.Drawing.Size(114, 42);
-            this.btnSizePlus.TabIndex = 0;
-            this.btnSizePlus.Text = "+";
-            this.btnSizePlus.UseVisualStyleBackColor = true;
-            this.btnSizePlus.Click += new System.EventHandler(this.btnSizePlus_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(12, 220);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(114, 42);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "-";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 282);
+            this.button1.BackColor = System.Drawing.SystemColors.Control;
+            this.button1.Location = new System.Drawing.Point(12, 355);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 156);
+            this.button1.Size = new System.Drawing.Size(114, 83);
             this.button1.TabIndex = 0;
             this.button1.Text = "CLEAR";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // pbAdd
+            // 
+            this.pbAdd.BackColor = System.Drawing.SystemColors.Control;
+            this.pbAdd.Image = global::Paint_Demo.Properties.Resources.add;
+            this.pbAdd.Location = new System.Drawing.Point(12, 172);
+            this.pbAdd.Name = "pbAdd";
+            this.pbAdd.Size = new System.Drawing.Size(114, 37);
+            this.pbAdd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbAdd.TabIndex = 0;
+            this.pbAdd.TabStop = false;
+            this.pbAdd.Click += new System.EventHandler(this.pbAdd_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBox1.Image = global::Paint_Demo.Properties.Resources.minus;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 215);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(114, 37);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBox2.Image = global::Paint_Demo.Properties.Resources.triangle;
+            this.pictureBox2.Location = new System.Drawing.Point(12, 267);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(114, 41);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // btnPlusFirstSideTriangle
+            // 
+            this.btnPlusFirstSideTriangle.Location = new System.Drawing.Point(12, 319);
+            this.btnPlusFirstSideTriangle.Name = "btnPlusFirstSideTriangle";
+            this.btnPlusFirstSideTriangle.Size = new System.Drawing.Size(28, 30);
+            this.btnPlusFirstSideTriangle.TabIndex = 0;
+            this.btnPlusFirstSideTriangle.Text = "1";
+            this.btnPlusFirstSideTriangle.UseVisualStyleBackColor = true;
+            this.btnPlusFirstSideTriangle.Click += new System.EventHandler(this.btnPlusFirstSideTriangle_Click);
+            // 
+            // btnPlusSecondSideTriangle
+            // 
+            this.btnPlusSecondSideTriangle.Location = new System.Drawing.Point(36, 319);
+            this.btnPlusSecondSideTriangle.Name = "btnPlusSecondSideTriangle";
+            this.btnPlusSecondSideTriangle.Size = new System.Drawing.Size(34, 30);
+            this.btnPlusSecondSideTriangle.TabIndex = 13;
+            this.btnPlusSecondSideTriangle.Text = "2";
+            this.btnPlusSecondSideTriangle.UseVisualStyleBackColor = true;
+            this.btnPlusSecondSideTriangle.Click += new System.EventHandler(this.btnPlusSecondSideTriangle_Click);
+            // 
+            // btnPlusThirdSideTriangle
+            // 
+            this.btnPlusThirdSideTriangle.Location = new System.Drawing.Point(64, 319);
+            this.btnPlusThirdSideTriangle.Name = "btnPlusThirdSideTriangle";
+            this.btnPlusThirdSideTriangle.Size = new System.Drawing.Size(28, 30);
+            this.btnPlusThirdSideTriangle.TabIndex = 14;
+            this.btnPlusThirdSideTriangle.Text = "3";
+            this.btnPlusThirdSideTriangle.UseVisualStyleBackColor = true;
+            this.btnPlusThirdSideTriangle.Click += new System.EventHandler(this.btnPlusThirdSideTriangle_Click);
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(98, 319);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(28, 30);
+            this.btnReset.TabIndex = 15;
+            this.btnReset.Text = "0";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // Form1
             // 
@@ -215,9 +281,14 @@ namespace Paint_Demo
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnReset);
+            this.Controls.Add(this.btnPlusThirdSideTriangle);
+            this.Controls.Add(this.btnPlusSecondSideTriangle);
+            this.Controls.Add(this.btnPlusFirstSideTriangle);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbAdd);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.btnSizePlus);
             this.Controls.Add(this.btnYellow);
             this.Controls.Add(this.btnGreen);
             this.Controls.Add(this.btnRed);
@@ -234,6 +305,10 @@ namespace Paint_Demo
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Paint | Chorrny Inc";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbAdd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -253,9 +328,14 @@ namespace Paint_Demo
         private System.Windows.Forms.Button btnRed;
         private System.Windows.Forms.Button btnGreen;
         private System.Windows.Forms.Button btnYellow;
-        private System.Windows.Forms.Button btnSizePlus;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pbAdd;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnPlusFirstSideTriangle;
+        private System.Windows.Forms.Button btnPlusSecondSideTriangle;
+        private System.Windows.Forms.Button btnPlusThirdSideTriangle;
+        private System.Windows.Forms.Button btnReset;
     }
 }
 
